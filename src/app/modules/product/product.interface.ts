@@ -1,6 +1,6 @@
-import { Types } from 'mongoose'
+import { Model, Types } from 'mongoose'
 
-export type Review = {
+export type IReview = {
   user: Types.ObjectId
   review: string
   rating: number
@@ -21,6 +21,7 @@ export type IProduct = {
     | 'CPU Cooler'
     | 'UPS'
     | 'Accessories'
+
   status: 'In Stock' | 'Out of Stock'
   price: number
   description: string
@@ -29,5 +30,13 @@ export type IProduct = {
   specification: string
   individualRating: number
   averageRating: number
-  reviews: Review[]
+  reviews: IReview[]
 }
+
+export type IProductFilters = {
+  searchTerm?: string
+  category?: string
+  status?: string
+}
+
+export type ProductModel = Model<IProduct>
