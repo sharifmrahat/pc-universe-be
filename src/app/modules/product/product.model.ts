@@ -30,18 +30,19 @@ const productSchema = new Schema<IProduct>({
     required: true,
   },
   price: { type: Number, required: true },
-  description: { type: String },
   brand: { type: String, required: true },
   model: { type: String, required: true },
+  description: { type: String },
   specification: { type: String },
-  individualRating: { type: Number, required: true },
-  averageRating: { type: Number, required: true },
+  individualRating: { type: Number },
+  averageRating: { type: Number },
   reviews: [
     {
       user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
       review: { type: String, required: true },
       rating: { type: Number, required: true },
     },
+    { required: false },
   ],
 })
 

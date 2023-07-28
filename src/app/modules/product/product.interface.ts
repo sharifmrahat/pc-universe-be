@@ -24,13 +24,13 @@ export type IProduct = {
 
   status: 'In Stock' | 'Out of Stock'
   price: number
-  description: string
   brand: string
   model: string
-  specification: string
-  individualRating: number
-  averageRating: number
-  reviews: IReview[]
+  description?: string
+  specification?: string
+  individualRating?: number
+  averageRating?: number
+  reviews?: IReview[]
 }
 
 export type IProductFilters = {
