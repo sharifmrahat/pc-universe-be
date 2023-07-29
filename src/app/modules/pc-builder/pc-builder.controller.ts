@@ -33,7 +33,20 @@ const getSinglePCBuilder = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const removeSingleItem = catchAsync(async (req: Request, res: Response) => {
+  const data = req.body
+  const result = await PCBuilderService.removeSingleItem(data)
+
+  sendResponse<IPCBuilder>(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Item removed successfully',
+    data: result,
+  })
+})
+
 export const PCBuilderController = {
   saveNewItems,
   getSinglePCBuilder,
+  removeSingleItem,
 }

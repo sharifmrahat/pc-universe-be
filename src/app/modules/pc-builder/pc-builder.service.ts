@@ -29,7 +29,31 @@ const getSinglePCBuilder = async (user: string): Promise<IPCBuilder | null> => {
   return result
 }
 
+const removeSingleItem = async (payload: {
+  user: string
+  id: string
+}): Promise<IPCBuilder | null> => {
+  const isExist = await PCBuilder.findOne({
+    user: payload.user,
+    items: { $in: [payload.id] },
+  })
+
+  if (!isExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'item is not found!')
+  }
+
+  const result = await PCBuilder.findByIdAndUpdate(
+    { _id: isExist._id },
+    { $pull: { items: payload.id } },
+    {
+      new: true,
+    }
+  ).populate('items')
+  return result
+}
+
 export const PCBuilderService = {
   saveItems,
   getSinglePCBuilder,
+  removeSingleItem,
 }
