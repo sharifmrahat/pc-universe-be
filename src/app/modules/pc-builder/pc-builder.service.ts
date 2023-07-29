@@ -9,7 +9,7 @@ const saveItems = async (pcBuilder: IPCBuilder): Promise<IPCBuilder | null> => {
   if (itemExist) {
     return await PCBuilder.findByIdAndUpdate(
       { _id: itemExist._id },
-      pcBuilder,
+      { $push: { items: { $each: pcBuilder.items.map(id => id) } } },
       {
         new: true,
       }
