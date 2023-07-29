@@ -160,7 +160,7 @@ const deleteProduct = async (_id: string): Promise<IProduct | null> => {
 }
 
 export const ProductService = {
-  addNewProduct: addNewProduct,
+  addNewProduct,
   getAllProducts,
   getSingleProduct,
   updateProduct,
