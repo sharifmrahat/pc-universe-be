@@ -31,12 +31,14 @@ export type IProduct = {
   individualRating?: number
   averageRating?: number
   reviews?: IReview[]
+  featured?: boolean
 }
 
 export type IProductFilters = {
   searchTerm?: string
   category?: string
   status?: string
+  featured?: boolean
 }
 
 export type ProductModel = Model<IProduct>
