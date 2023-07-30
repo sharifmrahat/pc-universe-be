@@ -2,7 +2,6 @@ import { Schema, model } from 'mongoose'
 import ApiError from '../../../errors/ApiError'
 import httpStatus from 'http-status'
 import { IProduct, ProductModel } from './product.interface'
-import { boolean } from 'zod'
 
 export const productSchema = new Schema<IProduct>(
   {
@@ -46,7 +45,7 @@ export const productSchema = new Schema<IProduct>(
       },
       { required: false },
     ],
-    featured: { type: boolean, default: false },
+    featured: { type: Boolean, default: false },
   },
   {
     timestamps: true,

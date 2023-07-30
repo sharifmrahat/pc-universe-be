@@ -42,11 +42,15 @@ const getAllProducts = async (
   }
 
   if (Object.keys(filtersData).length) {
-    andConditions.push({
-      $and: Object.entries(filtersData).map(([field, value]) => {
-        return { [field]: { $regex: value, $options: 'i' } }
-      }),
-    })
+    if (filtersData.featured) {
+      andConditions.push({ featured: filtersData.featured })
+    } else {
+      andConditions.push({
+        $and: Object.entries(filtersData).map(([field, value]) => {
+          return { [field]: { $regex: value, $options: 'i' } }
+        }),
+      })
+    }
   }
 
   const sortConditions: { [key: string]: SortOrder } = {}
