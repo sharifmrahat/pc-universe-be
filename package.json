@@ -1,7 +1,7 @@
 {
-  "name": "pc-universe-be",
+  "name": "rilo-inventory-server",
   "version": "1.0.0",
-  "description": "PC Universe Back-End",
+  "description": "Rilo Inventory",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
